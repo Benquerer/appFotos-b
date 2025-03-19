@@ -58,6 +58,10 @@ namespace appFotos.Controllers
         {
             if (ModelState.IsValid)
             {
+                //check if user already exists
+                if (_context.Utilizadores.Any(u => u.Nome == utilizadores.Nome)) {
+                    
+                }
                 _context.Add(utilizadores);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
